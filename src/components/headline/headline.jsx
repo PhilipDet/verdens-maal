@@ -1,12 +1,25 @@
 import { HeadlineStyled } from "./headline.styled";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
+import { goals } from "../../data/sdg";
 
 export const Headline = () => {
     const [headline, setHeadline] = useState("");
-    const location = useLocation();
+    let location = useLocation();
+    let [searchParams] = useSearchParams();
 
     useEffect(() => {
+        const goalId = searchParams.get("goal");
+        console.log(goalId);
+
+        if (goalId) {
+            const goal = goals.find((g) => g.id === goalId);
+            if (goal) {
+                setHeadline(`Mål ${goalId}: ${goal.title}`);
+                return;
+            }
+        }
+
         switch (location.pathname) {
             case "/":
                 setHeadline("Verdensmålene");
@@ -27,7 +40,7 @@ export const Headline = () => {
                 setHeadline("404 - Page not found!");
                 break;
         }
-    }, [location]);
+    }, [location, searchParams]);
 
     return (
         <HeadlineStyled>

@@ -27,8 +27,10 @@ export const GlobalStyled = createGlobalStyle`
     }
 
     main {
-        max-width: 1260px;
+        flex: 1;
         width: 100%;
-        margin: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 `;
