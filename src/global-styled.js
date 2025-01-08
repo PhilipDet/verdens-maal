@@ -14,12 +14,14 @@ export const GlobalStyled = createGlobalStyle`
     body {
         font-family: "Open Sans", sans-serif;
         font-size: 1.6rem;
+        height: 100vh;
     }
 
     #root {
         display: flex;
         flex-direction: column;
         align-items: center;
+        height: 100%;
     }
 
     h1, a {

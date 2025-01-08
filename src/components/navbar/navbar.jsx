@@ -20,7 +20,7 @@ export const Navbar = () => {
                 </li>
                 <li>
                     <NavLink
-                        to="/teaching"
+                        to="/education"
                         className={({ isActive }) =>
                             isActive ? "nav-active" : ""
                         }

@@ -10,7 +10,6 @@ export const Headline = () => {
 
     useEffect(() => {
         const goalId = searchParams.get("goal");
-        console.log(goalId);
 
         if (goalId) {
             const goal = goals.find((g) => g.id === goalId);
@@ -24,7 +23,7 @@ export const Headline = () => {
             case "/":
                 setHeadline("Verdensmålene");
                 break;
-            case "/teaching":
+            case "/education":
                 setHeadline("Undervisning");
                 break;
             case "/own-goal":
