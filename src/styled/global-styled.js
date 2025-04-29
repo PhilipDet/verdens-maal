@@ -17,6 +17,31 @@ export const GlobalStyled = createGlobalStyle`
         height: 100vh;
     }
 
+    body.dark-mode {
+        background-color: #444;
+        color: #fff;
+
+        nav {
+            ul {
+                li {
+                    a {
+                        color: #fff;
+                    }
+
+                    div {
+                        img {
+                            filter: invert(1);
+                        }
+                    }
+                }
+            }
+        }
+        
+        h1, h2 {
+            color: #000;
+        }
+    }
+
     #root {
         display: flex;
         flex-direction: column;

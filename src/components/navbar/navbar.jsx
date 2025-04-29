@@ -1,7 +1,14 @@
 import { NavbarStyled } from "./navbar.styled";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { ModeContext } from "../../providers/mode";
+
+import sun from "../../assets/sun-regular.svg";
+import moon from "../../assets/moon-regular.svg";
 
 export const Navbar = () => {
+    const { isDark, toggleMode } = useContext(ModeContext);
+
     return (
         <NavbarStyled>
             <ul>
@@ -57,6 +64,16 @@ export const Navbar = () => {
                     >
                         Kontakt os
                     </NavLink>
+                </li>
+                <li>
+                    <div>
+                        <img src={isDark ? moon : sun} />
+                        <input
+                            type="checkbox"
+                            onClick={toggleMode}
+                            checked={isDark}
+                        />
+                    </div>
                 </li>
             </ul>
         </NavbarStyled>

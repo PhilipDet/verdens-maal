@@ -1,17 +1,26 @@
+import { useEffect, useState } from "react";
 import { EducationStyled } from "./education.styled";
+import axios from "axios";
 
 export const Education = () => {
-    const categories = [
-        { name: "Biologi", color: "#A41942" },
-        { name: "Bioteknologi", color: "#DFA63B" },
-        { name: "Kemi", color: "#4BA039" },
-        { name: "Dansk", color: "#FF81FF" },
-        { name: "Design", color: "#3101C9" },
-        { name: "Historie", color: "#98C89E" },
-        { name: "Fysik", color: "#0C6C9A" },
-        { name: "Idræt", color: "#27BDDF" },
-        { name: "Matematik", color: "#6591A5" },
-    ];
+    const [categories, setCategories] = useState([]);
+
+    const fetchData = () => {
+        axios
+            .get("https://api.mediehuset.net/sdg/edu")
+            .then((response) => {
+                console.log(response.data.items);
+
+                setCategories(response.data.items);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <EducationStyled>
@@ -23,12 +32,12 @@ export const Education = () => {
                 kernestof i fagene.
             </p>
             <div id="categories-container">
-                {categories.map((category, index) => (
+                {categories.map((item) => (
                     <div
-                        key={index}
-                        style={{ backgroundColor: category.color }}
+                        key={item.id}
+                        style={{ backgroundColor: `#${item.color}` }}
                     >
-                        <h2>{category.name}</h2>
+                        <h2>{item.name}</h2>
                     </div>
                 ))}
             </div>

@@ -32,6 +32,29 @@ export const NavbarStyled = styled.nav`
                     color: rgba(43, 187, 222, 1);
                 }
             }
+
+            div {
+                position: relative;
+                width: 2rem;
+                height: 2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    position: absolute;
+                    z-index: 1;
+                }
+
+                input[type="checkbox"] {
+                    position: absolute;
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 2;
+                    cursor: pointer;
+                }
+            }
         }
     }
 `;
